@@ -1,0 +1,58 @@
+<div class="container">
+  <h1 class="title">
+    People
+  </h1>
+
+  <app-sort-form-controls (searchStrChange)="handleSearchChange($event)" (sortCategoryChange)="handleSortChange($event)" (sortDirectionChange)="handleDirectionChange($event)"
+    [sortCategories]="peopleCategories">
+  </app-sort-form-controls>
+
+  <table class="main-table">
+    <tr>
+      <th *ngFor="let category of peopleCategories" class="cell cell-title">
+        {{category}}
+      </th>
+    </tr>
+    <tr *ngFor="let person of people$ | async; trackBy: trackPeople">
+      <th class="cell">
+        {{person.name}}
+      </th>
+      <th class="cell">
+        {{person.created | date}}
+      </th>
+      <th class="cell">
+        {{person.edited | date}}
+      </th>
+      <th class="cell">
+        {{person.birth === 'unknown' ? '-' : person.birth}}
+      </th>
+      <th class="cell">
+        {{person.eyes}}
+      </th>
+      <th class="cell">
+        {{person.gender}}
+      </th>
+      <th class="cell">
+        {{person.hair}}
+      </th>
+      <th class="cell">
+        {{person.height === 'unknown' ? '-' : person.height}}
+      </th>
+      <th class="cell">
+        {{person.home}}
+      </th>
+      <th class="cell">
+        {{person.mass === 'unknown' ? '-' : person.mass }}
+      </th>
+      <th class="cell">
+        {{person.skin === 'unknown' ? '-' : person.skin }}
+      </th>
+      <th class="cell">
+        {{person.pk}}
+      </th>
+    </tr>
+  </table>
+
+  <app-pagination-controls [currentPage]="currentPage" [nextPageExist]="nextPageExist"
+    [getNextPage]="nextPage.bind(this)" [getPrevPage]="prevPage.bind(this)"></app-pagination-controls>
+</div>

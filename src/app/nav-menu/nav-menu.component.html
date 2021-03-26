@@ -1,0 +1,9 @@
+<nav>
+  <ul class="nav">
+    <li routerLinkActive="active"  *ngFor="let category of categories" class="nav-item">
+      <a class="nav-link" [routerLink]="['table-' + category]">
+        {{ category }}
+      </a>
+    </li>
+  </ul>
+</nav>

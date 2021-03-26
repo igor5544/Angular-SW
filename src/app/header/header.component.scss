@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.nav {
+  flex-basis: 80%;
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+}
+
+.login {
+  margin: 0;
+  margin-right: 20px;
+  text-transform: uppercase;
+}

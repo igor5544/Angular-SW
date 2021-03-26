@@ -1,0 +1,36 @@
+.container {
+  max-width: 1800px;
+  width: 100%;
+  padding: 5px 20px;
+  margin: 0 auto;
+}
+
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.main-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  .cell {
+    padding: 5px 10px;
+    border: 1px solid #483ffc;
+    text-align: center;
+    word-break: break-word;
+    min-width: 132px;
+
+    &-title {
+      text-transform: uppercase;
+      background-color: #483ffc;
+      color: #ffffff;
+    }
+  }
+
+  .control {
+    width: 100%;
+    border-radius: 0;
+  }
+}

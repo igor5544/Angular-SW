@@ -1,0 +1,9 @@
+
+  <div>
+    <button class="btn btn-primary" (click)="prevPage()" [disabled]="currentPage <= 1">
+      Prev
+    </button>
+    <button class="btn btn-primary" (click)="nextPage()" [disabled]="!nextPageExist">
+      Next
+    </button>
+  </div>

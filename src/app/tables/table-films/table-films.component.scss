@@ -1,0 +1,30 @@
+.bottom-contorls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.add-new {
+  display: block;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.popup-btn {
+  transition: all 0.3s;
+  border: none;
+  background-color: transparent;
+  color: #337ab7;
+
+  &:hover {
+    color: #3356b7;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}

@@ -1,0 +1,67 @@
+<div class="container">
+  <h1 class="title">
+    Films
+  </h1>
+
+  <app-sort-form-controls (searchStrChange)="handleSearchChange($event)" (sortCategoryChange)="handleSortChange($event)"
+    (sortDirectionChange)="handleDirectionChange($event)" [sortCategories]="filmCategories">
+  </app-sort-form-controls>
+
+  <table class="main-table">
+    <tr>
+      <th *ngFor="let category of filmCategories" class="cell cell-title">
+        {{category}}
+      </th>
+      <th class="cell cell-title">
+        controls
+      </th>
+    </tr>
+    <tr *ngFor="let film of films$ | async; trackBy: trackFilm">
+      <th class="cell">
+        <button class="popup-btn" (click)="showEditForm(film.id)">
+          {{film.title}}
+        </button>
+      </th>
+      <th class="cell">
+        {{film.created | date}}
+      </th>
+      <th class="cell">
+        {{film.edited | date}}
+      </th>
+      <th class="cell">
+        {{film.director}}
+      </th>
+      <th class="cell">
+        {{film.opening}}
+      </th>
+      <th class="cell">
+        {{film.producer}}
+      </th>
+      <th class="cell">
+        {{film.release | date}}
+      </th>
+      <th class="cell">
+        <a class="control btn btn-warning" [routerLink]="['/film-form', film.id]">
+          Edit
+        </a>
+        <button class="control btn btn-danger" (click)="openRemovePopup(film.id)" type="button">
+          Remove
+        </button>
+      </th>
+    </tr>
+  </table>
+
+  <div class="bottom-contorls">
+    <app-pagination-controls [currentPage]="currentPage" [nextPageExist]="paginationSet.nextPageExist"
+      [getNextPage]="nextPage.bind(this)" [getPrevPage]="prevPage.bind(this)">
+    </app-pagination-controls>
+
+    <a class="btn btn-success add-new" routerLink="/film-form">
+      Add new film
+    </a>
+  </div>
+
+  <app-form-popup [(showPopup)]="showFormPopup" [filmId]="popupId" *ngIf="popupId"></app-form-popup>
+
+  <app-confirm-popup [(showPopup)]="showConfirmPopup" [action]="removeFilm.bind(this)">Are you sure?</app-confirm-popup>
+</div>

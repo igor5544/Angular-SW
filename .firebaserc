@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "car-form-without-js": {
+      "hosting": {
+        "angular-sw": [
+          "car-form-without-js"
+        ]
+      }
+    }
+  }
+}

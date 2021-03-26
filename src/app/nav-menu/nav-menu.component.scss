@@ -1,0 +1,9 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.active {
+  border-bottom: 1px solid #0e1efa;
+}

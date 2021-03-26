@@ -1,0 +1,12 @@
+<div class="container wrapper">
+  <app-nav-menu class="nav"></app-nav-menu>
+
+  <div class="auth" *ngIf="login">
+    <p class="login">
+      {{login}}
+    </p>
+    <button class="btn btn-danger" (click)="logout()">
+      logout
+    </button>
+  </div>
+</div>

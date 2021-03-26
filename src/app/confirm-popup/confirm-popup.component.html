@@ -1,0 +1,16 @@
+<div class="overlay" *ngIf="showPopup">
+  <div class="popup">
+    <p class="text">
+      <ng-content></ng-content>
+    </p>
+
+    <div class="btn-wrapper">
+      <button type="button" class="control btn" (click)="closePopup()">
+        no
+      </button>
+      <button type="button" class="control btn btn-danger" (click)="confirm()">
+        yes
+      </button>
+    </div>
+  </div>
+</div>

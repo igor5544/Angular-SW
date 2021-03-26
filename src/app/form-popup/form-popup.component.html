@@ -1,0 +1,7 @@
+<div class="overlay" *ngIf="showPopup">
+  <button class="close-btn" (click)="closePopup(form)">X</button>
+  <div class="popup">
+    <app-film-form #form [propId]="filmId" (wasSavedChange)="handleWasSavedChange($event)">
+    </app-film-form>
+  </div>
+</div>

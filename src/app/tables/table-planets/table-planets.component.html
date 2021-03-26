@@ -1,0 +1,59 @@
+<div class="container">
+  <h1 class="title">
+    Planet
+  </h1>
+
+  <app-sort-form-controls (searchStrChange)="handleSearchChange($event)" (sortCategoryChange)="handleSortChange($event)" (sortDirectionChange)="handleDirectionChange($event)"
+    [sortCategories]="planetCategories">
+  </app-sort-form-controls>
+
+  <table class="main-table">
+    <tr>
+      <th *ngFor="let category of planetCategories" class="cell cell-title">
+        {{category}}
+      </th>
+    </tr>
+    <tr
+      *ngFor="let planet of planets$ | async; trackBy: trackPlanet">
+      <th class="cell">
+        {{planet.name}}
+      </th>
+      <th class="cell">
+        {{planet.created | date}}
+      </th>
+      <th class="cell">
+        {{planet.edited | date}}
+      </th>
+      <th class="cell">
+        {{planet.climate === 'unknown' ? '-' : planet.climate}}
+      </th>
+      <th class="cell">
+        {{planet.diameter === 'unknown' ? '-' : planet.diameter}}
+      </th>
+      <th class="cell">
+        {{planet.gravity === 'unknown' ? '-' : planet.gravity}}
+      </th>
+      <th class="cell">
+        {{planet.orbitalPeriod === 'unknown' ? '-' : planet.orbitalPeriod}}
+      </th>
+      <th class="cell">
+        {{planet.population === 'unknown' ? '-' : planet.population}}
+      </th>
+      <th class="cell">
+        {{planet.rotationPeriod === 'unknown' ? '-' : planet.rotationPeriod}}
+      </th>
+      <th class="cell">
+        {{planet.water === 'unknown' ? '-' : planet.water}}
+      </th>
+      <th class="cell">
+        {{planet.terrain === 'unknown' ? '-' : planet.terrain}}
+      </th>
+      <th class="cell">
+        {{planet.pk}}
+      </th>
+    </tr>
+  </table>
+
+  <app-pagination-controls [currentPage]="currentPage" [nextPageExist]="nextPageExist"
+  [getNextPage]="nextPage.bind(this)" [getPrevPage]="prevPage.bind(this)"></app-pagination-controls>
+</div>

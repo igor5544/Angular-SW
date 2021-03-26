@@ -1,0 +1,27 @@
+.form {
+  max-width: 900px;
+  padding-bottom: 30px;
+  margin-right: auto;
+  margin-left: auto;
+
+  label {
+    width: 100%;
+  }
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+.textarea {
+  resize: none;
+  min-height: 150px;
+}
+
+.btn {
+  display: block;
+  max-width: 400px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}

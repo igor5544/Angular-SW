@@ -1,0 +1,36 @@
+<div class="container">
+  <h1 class="title">
+    Login
+  </h1>
+
+  <div class="form-wrapper">
+    <form [formGroup]="isLogin ? loginForm : registrationForm" (ngSubmit)="onSubmit()">
+      <label>Login
+        <input formControlName="login" class="form-control" type="text" name="login" autocomplete required>
+      </label>
+
+      <label>Password
+        <input formControlName="password" class="form-control" type="password" name="password" autocomplete required>
+      </label>
+
+      <ng-container *ngIf="!isLogin">
+        <label>Repeat password
+          <input formControlName="repeatPassword" class="form-control" type="password" name="repeat-password" required>
+        </label>
+      </ng-container>
+
+      <p *ngIf="alertText" class=" alert alert-danger">
+        {{alertText}}
+      </p>
+
+      <button [disabled]="isLogin ? loginForm.invalid : registrationForm.invalid" class="btn btn-primary" type="submit">
+        {{isLogin ? 'Login' : 'Registration'}}
+      </button>
+    </form>
+
+    <button class="btn btn-warning" (click)="switchMode()" type="button">
+      Go to
+      {{isLogin ? 'Registration' : 'Login'}}
+    </button>
+  </div>
+</div>

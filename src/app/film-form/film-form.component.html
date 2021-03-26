@@ -1,0 +1,88 @@
+<div class="container">
+  <h1 class="title">
+    {{filmId ? 'Update film data' : 'Add new film' }}
+  </h1>
+
+  <form *ngIf="!filmId || !isLoading; loading" [formGroup]="filmForm" (ngSubmit)="onSubmit()" class="form">
+    <label>Title
+      <input formControlName="title" class="form-control" type="text" name="title" autocomplete required>
+    </label>
+
+    <label>Created
+      <input formControlName="created" class="form-control" type="date" name="created" autocomplete required>
+    </label>
+
+    <label>Edited
+      <input formControlName="edited" class="form-control" type="date" name="edited" autocomplete required>
+    </label>
+
+    <label>Director
+      <input formControlName="director" class="form-control" type="text" name="director" autocomplete required>
+    </label>
+
+    <label>Opening
+      <textarea formControlName="opening" class="form-control textarea" name="opening" required></textarea>
+    </label>
+
+    <label>Producer
+      <input formControlName="producer" class="form-control" type="text" name="producer" autocomplete required>
+    </label>
+
+    <label>Release
+      <input formControlName="release" class="form-control" type="date" name="release" autocomplete required>
+    </label>
+
+    <ng-container *ngIf="!propId">
+      <label>Characters
+        <select formControlName="characters" class="form-control" multiple size="5">
+          <option *ngFor="let person of peoples$ | async" [value]="person.pk">
+            {{person.name}}
+          </option>
+        </select>
+      </label>
+
+      <label>Planets
+        <select formControlName="planets" class="form-control" multiple size="5">
+          <option *ngFor="let planet of planets$ | async" [value]="planet.pk">
+            {{planet.name}}
+          </option>
+        </select>
+      </label>
+
+      <label>Species
+        <select formControlName="species" class="form-control" multiple size="5">
+          <option *ngFor="let species of species$ | async" [value]="species.pk">
+            {{species.name}}
+          </option>
+        </select>
+      </label>
+
+      <label>Starships
+        <select formControlName="starships" class="form-control" multiple size="5">
+          <option *ngFor="let starship of starships$ | async" [value]="starship.pk">
+            {{starship.class}} {{starship.hyperdrive}}
+          </option>
+        </select>
+      </label>
+
+      <label>Vehicles
+        <select formControlName="vehicles" class="form-control" multiple size="5">
+          <option *ngFor="let vehicle of vehicles$ | async" [value]="vehicle.pk">
+            {{vehicle.class}} {{vehicle.pk}}
+          </option>
+        </select>
+      </label>
+    </ng-container>
+
+    <button [disabled]="filmForm.invalid || isSending" class="btn btn-primary" type="submit">
+      {{filmId ? 'Save updates' : 'Add new film' }}
+    </button>
+  </form>
+
+  <app-loader *ngIf="isLoading" #loading></app-loader>
+
+  <app-confirm-popup [(showPopup)]="showPopup" [action]="confirmPopupHandler.bind(this)">
+    Are you sure? <br>
+    Your data will not be saved.
+  </app-confirm-popup>
+</div>

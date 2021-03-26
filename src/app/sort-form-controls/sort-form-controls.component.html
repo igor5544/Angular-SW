@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <form class="form" (submit)="setSearch()">
+    <input type="search" class="search" [(ngModel)]="searchStr" [ngModelOptions]="{standalone: true}">
+    <button class="btn btn-warning">
+      Search
+    </button>
+  </form>
+
+  <label class="sort-wrapper" for="sort">Sort by:
+    <select name="sort" id="sort" [(ngModel)]="sortCategory" (change)="setSort()" class="list form-control">
+      <option *ngFor="let field of sortCategories" [value]="field">
+        {{field}}
+      </option>
+    </select>
+  </label>
+
+  <div class="btns-wrapper">
+    <button class="btn btn-primary btn-direction btn-direction--top" (click)="setSortDirection('top')"></button>
+    <button class="btn btn-primary btn-direction btn-direction--bottom"(click)="setSortDirection('bottom')"></button>
+  </div>
+</div>

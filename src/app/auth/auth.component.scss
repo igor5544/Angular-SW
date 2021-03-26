@@ -1,0 +1,21 @@
+.form-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+
+  label {
+    width: 100%;
+  }
+}
+
+.form-control,
+.alert {
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: block;
+  min-width: 200px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+}
